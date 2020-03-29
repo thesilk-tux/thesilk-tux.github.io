@@ -1,0 +1,33 @@
+img.profile-img {
+  background-color: white;
+  border-radius: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+div.profile-card {
+  border: 1px solid ;
+  border-color: grey;
+}
+
+%profile-quote {
+  width:90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+
+}
+
+p.profile-quote {
+  @extend %profile-quote;
+}
+
+p.profile-quote-origin {
+  @extend %profile-quote;
+  color: lightgrey;
+  padding-left: 20%;
+}
