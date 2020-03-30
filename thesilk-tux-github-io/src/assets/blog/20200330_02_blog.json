@@ -1,0 +1,15 @@
+{
+  "id": 2,
+  "createdAt": "2020-03-30 19:21",
+  "updatedAt": "2020-03-30 22:48",
+  "imgSrc": "imgage source",
+  "imgUrl": "assets/img/stayathome.jpg",
+  "content": [
+    {"caption": "My second Blog"},
+    {"lead": "Here comes the lead paragraph "},
+    {"text": "lorem lipsum"},
+    {"image": "path"},
+    {"imageCaption": "caption"},
+    {"text": "lorem lipsum"}
+  ]
+}
