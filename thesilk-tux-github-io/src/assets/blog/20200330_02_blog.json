@@ -6,10 +6,10 @@
   "imgUrl": "assets/img/stayathome.jpg",
   "content": [
     {"caption": "My second Blog"},
-    {"lead": "Here comes the lead paragraph "},
-    {"text": "lorem lipsum"},
-    {"image": "path"},
-    {"imageCaption": "caption"},
-    {"text": "lorem lipsum"}
+    {"lead": "Here comes the lead paragraph and I will tell you something in short so you can get an overview about this article. "},
+    {"section": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."},
+    {"image": "assets/img/avatar.png"},
+    {"imageCaption": "Caption 1: This is my avatar"},
+    {"section": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<Paste>"}
   ]
 }

@@ -15,7 +15,7 @@ interface IBlog {
 async function main() {
   const blogs: IBlog[] = [];
   let files = await glob('src/assets/blog/*.json');
-  files = files.filter((item: string) => !item.endsWith('overview.json'))
+  files = files.filter((item: string) => !item.endsWith('overview.json'));
 
   for (const file of files) {
     const data = await fs.readFileSync(file);
@@ -23,7 +23,7 @@ async function main() {
     blogs.push({
       caption: obj.content.filter((item) => item.caption)[0].caption,
       createdAt: obj.createdAt,
-      filename: file.replace('src/', ''),
+      filename: file.replace('src/assets/blog/', '').replace('.json', ''),
       id: obj.id,
       imageSrc: obj.imgSrc,
       imageUrl: obj.imgUrl,
@@ -32,7 +32,10 @@ async function main() {
     });
   }
 
-  fs.writeFileSync('src/assets/blog/overview.json', JSON.stringify(blogs, null, 4));
+  fs.writeFileSync(
+    'src/assets/blog/overview.json',
+    JSON.stringify(blogs, null, 4)
+  );
 }
 
 main();

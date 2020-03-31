@@ -8,3 +8,12 @@ export interface IBlogOverview {
   leadParagraph: string;
   updatedAt: string;
 }
+
+export interface IBlogEntry {
+  id?: number;
+  createdAt?: string;
+  updatedAt?: string;
+  imgSrc?: string;
+  imageUrl?: string;
+  content?: any[];
+}

@@ -1,0 +1,19 @@
+<ng-container *ngFor="let content of blog.content">
+  <ng-container [ngSwitch]="getContentKey(content)">
+    <div class="caption" *ngSwitchCase="'caption'">
+      <h1>{{ content.caption }}</h1>
+    </div>
+    <div class="leadParagrap"*ngSwitchCase="'lead'">
+      <p><strong>{{ content.lead }}</strong></p>
+    </div>
+    <div class="section"*ngSwitchCase="'section'">
+      <p>{{ content.section }}</p>
+    </div>
+    <div class="image"*ngSwitchCase="'image'">
+      <img class="image-fluid" [src]="content.image">
+    </div>
+    <div class="image-caption"*ngSwitchCase="'imageCaption'">
+      <p>{{ content.imageCaption }}</p>
+    </div>
+  </ng-container>
+</ng-container>

@@ -2,7 +2,7 @@
     {
         "caption": "My first Blog",
         "createdAt": "2020-03-30 18:21",
-        "filename": "assets/blog/20200330_01_blog.json",
+        "filename": "20200330_01_blog",
         "id": 1,
         "imageSrc": "imgage source",
         "imageUrl": "assets/img/stayathome.jpg",
@@ -12,11 +12,11 @@
     {
         "caption": "My second Blog",
         "createdAt": "2020-03-30 19:21",
-        "filename": "assets/blog/20200330_02_blog.json",
+        "filename": "20200330_02_blog",
         "id": 2,
         "imageSrc": "imgage source",
         "imageUrl": "assets/img/stayathome.jpg",
-        "leadParagraph": "Here comes the lead paragraph ",
+        "leadParagraph": "Here comes the lead paragraph and I will tell you something in short so you can get an overview about this article. ",
         "updatedAt": "2020-03-30 22:48"
     }
 ]

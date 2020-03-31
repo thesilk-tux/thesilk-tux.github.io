@@ -7,9 +7,9 @@
   "content": [
     {"caption": "My first Blog"},
     {"lead": "Here comes the lead paragraph "},
-    {"text": "lorem lipsum"},
+    {"section": "lorem lipsum"},
     {"image": "path"},
     {"imageCaption": "caption"},
-    {"text": "lorem lipsum"}
+    {"section": "lorem lipsum"}
   ]
 }
