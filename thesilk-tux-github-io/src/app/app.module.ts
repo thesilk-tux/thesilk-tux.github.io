@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BlogModule } from './blog/blog.module';
+import { ImpressumModule } from './impressum/impressum.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { BlogModule } from './blog/blog.module';
     HeaderComponent,
     ProfileComponent,
   ],
-  imports: [AppRoutingModule, BrowserModule, BlogModule],
+  imports: [AppRoutingModule, BrowserModule, BlogModule, ImpressumModule],
   providers: [],
   bootstrap: [AppComponent],
 })
