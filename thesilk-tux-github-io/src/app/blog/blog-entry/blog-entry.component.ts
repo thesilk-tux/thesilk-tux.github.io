@@ -10,14 +10,14 @@ import { BlogService } from 'src/app/blog/blog.service';
   styleUrls: ['./blog-entry.component.scss'],
 })
 export class BlogEntryComponent implements OnInit {
-blog: IBlogEntry = {};
+  public blog: IBlogEntry = {};
 
   constructor(
     private blogService: BlogService,
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     const blogFile = this.route.snapshot.paramMap.get('id');
 
     this.blogService.getBlogEntry(blogFile).subscribe((res) => {
@@ -25,7 +25,7 @@ blog: IBlogEntry = {};
     });
   }
 
-  getContentKey(content): string {
+  public getContentKey(content: any): string {
     return Object.keys(content)[0];
   }
 }

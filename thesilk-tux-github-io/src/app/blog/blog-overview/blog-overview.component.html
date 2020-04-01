@@ -1,19 +1,39 @@
 <ng-container *ngFor="let blog of blogOverview">
-  <div class="card mb-3">
-    <div class="row">
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-        <img [src]="blog.imageUrl" class="card-img" />
-        <div class="img-src">{{ blog.imageSrc }}</div>
+  <div class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
+    <div class="card mb-3">
+      <img [src]="blog.imageUrl" class="card-img" />
+      <div class="img-fluid">{{ blog.imageSrc }}</div>
+      <div class="card-body">
+        <a class="card-title" [routerLink]="['/blog', blog.filename]">{{
+          blog.caption
+        }}</a>
+        <p class="card-text">{{ shortenLeadParagraph(blog.leadParagraph) }}</p>
+        <p class="card-text">
+          <small class="text-muted">Created at {{ blog.createdAt }}</small>
+        </p>
       </div>
-      <div class="col-6 col-sm-6 col-md-8 col-lg-9 col-xl-9">
-        <div class="card-body">
-          <a class="card-title" [routerLink]="['/blog', blog.filename]">{{
-            blog.caption
-          }}</a>
-          <p class="card-text">{{ blog.leadParagraph }}</p>
-          <p class="card-text">
-            <small class="text-muted">Created at {{ blog.createdAt }}</small>
-          </p>
+    </div>
+  </div>
+
+  <div class="d-none d-md-block d-lg-block d-xl-block">
+    <div class="card mb-3">
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+          <img [src]="blog.imageUrl" class="card-img" />
+          <div class="img-src">{{ blog.imageSrc }}</div>
+        </div>
+        <div class="col-6 col-sm-6 col-md-8 col-lg-9 col-xl-9">
+          <div class="card-body">
+            <a class="card-title" [routerLink]="['/blog', blog.filename]">{{
+              blog.caption
+            }}</a>
+            <p class="card-text" data-toggle="tooltip" data-placement="top" [title]="blog.leadParagraph">
+              {{ shortenLeadParagraph(blog.leadParagraph) }}
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Created at {{ blog.createdAt }}</small>
+            </p>
+          </div>
         </div>
       </div>
     </div>

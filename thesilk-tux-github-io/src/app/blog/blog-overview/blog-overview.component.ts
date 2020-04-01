@@ -24,4 +24,18 @@ export class BlogOverviewComponent implements OnInit {
       new Date().getTime() - new Date(blog.updatedAt).getTime();
     console.log(updateTime / 360000.0);
   }
+
+  public shortenLeadParagraph(content: any): string {
+    const words = content.split(' ');
+    let lengthLead = 0;
+    for (const word of words) {
+      lengthLead += word.length;
+      console.log(lengthLead);
+      if (lengthLead + word.length >= 100) {
+        console.log(lengthLead);
+        return content.substring(0, lengthLead) + ' ...';
+      }
+    }
+    return content;
+  }
 }

@@ -13,6 +13,7 @@ div.leadParagrap, div.section {
 }
 
 img.image-fluid {
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -22,4 +23,8 @@ div.image-caption {
   text-align: center;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+div.disclaimer {
+  font-style: italic;
 }
