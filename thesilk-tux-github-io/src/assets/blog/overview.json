@@ -1,22 +1,12 @@
 [
     {
-        "caption": "My first Blog",
-        "createdAt": "2020-03-30 18:21",
-        "filename": "20200330_01_blog",
+        "caption": "Politische Maßnahmen gegen Covid-19 in Deutschland",
+        "createdAt": "2020-04-01 22:16",
+        "filename": "20200401_01_covid_19",
         "id": 1,
-        "imageSrc": "imgage source",
+        "imageSrc": "",
         "imageUrl": "assets/img/stayathome.jpg",
-        "leadParagraph": "Here comes the lead paragraph ",
-        "updatedAt": "2020-03-30 19:12"
-    },
-    {
-        "caption": "My second Blog",
-        "createdAt": "2020-03-30 19:21",
-        "filename": "20200330_02_blog",
-        "id": 2,
-        "imageSrc": "imgage source",
-        "imageUrl": "assets/img/stayathome.jpg",
-        "leadParagraph": "Here comes the lead paragraph and I will tell you something in short so you can get an overview about this article. ",
-        "updatedAt": "2020-03-30 22:48"
+        "leadParagraph": "Das Leben in Deutschland steht still und jeder ist in seiner persönlichen Freiheit für das Wohl der Allgemeinheit eingeschränkt. Doch sind die Maßnahmen wirklich sinnvoll und zeigen sie Wirkung? Jeden Tag erreichen uns neue Nachrichten, dass die Anzahl der Neuinfektionen so hoch ist wie noch nie. Wie passt dies zusammen? Dies und weiteres möchte ich gern im Weiteren analysieren.",
+        "updatedAt": "2020-04-01 22:16"
     }
 ]
