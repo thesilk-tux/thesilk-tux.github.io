@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { BlogEntryComponent } from './blog-entry.component';
+import { RouterModule } from '@angular/router';
 
 describe('BlogEntryComponent', () => {
   let component: BlogEntryComponent;
@@ -8,9 +10,9 @@ describe('BlogEntryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogEntryComponent ]
-    })
-    .compileComponents();
+      declarations: [BlogEntryComponent],
+      imports: [HttpClientTestingModule, RouterModule.forRoot([])],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
