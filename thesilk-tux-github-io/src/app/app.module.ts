@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BlogModule } from './blog/blog.module';
 import { ImpressumModule } from './impressum/impressum.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { ImpressumModule } from './impressum/impressum.module';
     HeaderComponent,
     ProfileComponent,
   ],
-  imports: [AppRoutingModule, BrowserModule, BlogModule, ImpressumModule],
+  imports: [AppRoutingModule, BrowserModule, BlogModule, ImpressumModule, DashboardModule],
   providers: [],
   bootstrap: [AppComponent],
 })
