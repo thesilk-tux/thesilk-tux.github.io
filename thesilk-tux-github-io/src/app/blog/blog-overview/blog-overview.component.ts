@@ -22,7 +22,6 @@ export class BlogOverviewComponent implements OnInit {
   getTimeSinceLastUpdate(blog: IBlogOverview): any {
     const updateTime =
       new Date().getTime() - new Date(blog.updatedAt).getTime();
-    console.log(updateTime / 360000.0);
   }
 
   public shortenLeadParagraph(content: any): string {
@@ -30,9 +29,7 @@ export class BlogOverviewComponent implements OnInit {
     let lengthLead = 0;
     for (const word of words) {
       lengthLead += word.length;
-      console.log(lengthLead);
       if (lengthLead + word.length >= 100) {
-        console.log(lengthLead);
         return content.substring(0, lengthLead) + ' ...';
       }
     }
