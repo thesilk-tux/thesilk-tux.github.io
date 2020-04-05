@@ -1,7 +1,17 @@
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title">Bestätigte Infektionen</h4>
-    <p class="card-text">{{ getLatestConfirmedNumber("Germany") }}</p>
-    <p class="card-text">{{ getRelativeIncreasingRate("Germany") | number }}%</p>
+<h1>Covid-19 Dashboard</h1>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+    <app-dashboard-card
+      caption="Bestätigte Fälle"
+      [absoluteValue]="getLastConfirmed()"
+      [relativeValue]="getLastConfirmedRelative()"
+    ></app-dashboard-card>
+  </div>
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+    <app-dashboard-card
+      caption="Todesfälle"
+      [absoluteValue]="getLastDeaths()"
+      [relativeValue]="getLastDeathsRelative()"
+    ></app-dashboard-card>
   </div>
 </div>
