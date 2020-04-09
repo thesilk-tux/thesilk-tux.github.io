@@ -1,0 +1,16 @@
+<div class="line-chart">
+  <h4>{{ topic }}</h4>
+  <div class="chart-wrapper">
+    <canvas
+      baseChart
+      [datasets]="dataValues"
+      [labels]="dataLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      chartType="line"
+      [plugins]="lineChartPlugins"
+    >
+    </canvas>
+  </div>
+</div>
