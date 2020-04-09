@@ -1,23 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { BlogModule } from './blog/blog.module';
-import { ImpressumModule } from './impressum/impressum.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { GeneralModule } from './general/general.module';
+import { ImpressumModule } from './impressum/impressum.module';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ProfileComponent,
   ],
-  imports: [AppRoutingModule, BrowserModule, BlogModule, ImpressumModule, DashboardModule],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BlogModule,
+    DashboardModule,
+    GeneralModule,
+    ImpressumModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}
