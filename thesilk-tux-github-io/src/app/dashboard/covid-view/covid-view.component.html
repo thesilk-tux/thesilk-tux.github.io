@@ -1,4 +1,6 @@
 <h1>Covid-19 Dashboard</h1>
+<h6>Stand: {{lastUpdate}}</h6>
+<h6 class="data-source">Source: <a href="https://github.com/CSSEGISandData/COVID-19">CSSEGISandData</a></h6>
 <div class="row">
   <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <app-dashboard-card
@@ -13,5 +15,8 @@
       [absoluteValue]="getLastDeaths()"
       [relativeValue]="getLastDeathsRelative()"
     ></app-dashboard-card>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <app-confirmed-total-line-chart [data]="covidData" [country]="country"></app-confirmed-total-line-chart>
   </div>
 </div>

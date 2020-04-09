@@ -7,9 +7,11 @@ import { CovidService } from '../covid.service';
   styleUrls: ['./covid-view.component.scss'],
 })
 export class CovidViewComponent implements OnInit {
-  public country = 'Germany';
+  country = 'Germany';
+  lastUpdate = new Date().toLocaleString();
 
-  private covidData: Map<string, any[]>;
+  covidData: Map<string, any[]>;
+  private lenCovidData = 1;
 
   constructor(private covidService: CovidService) {}
 
@@ -20,85 +22,48 @@ export class CovidViewComponent implements OnInit {
           resConfirmed,
           resDeaths
         );
+        this.lenCovidData = this.covidData.get(this.country).length;
+        this.getDateLastEntry();
       });
     });
   }
 
   getLastConfirmed(): number {
     if (this.covidData) {
-      return this.covidData.get(this.country)[
-        this.covidData.get(this.country).length - 1
-      ].confirmed;
+      return this.covidData.get(this.country)[this.lenCovidData - 1].confirmed;
     }
     return 0;
   }
 
   getLastConfirmedRelative(): number {
     if (this.covidData !== undefined) {
-      return 100 * this.covidData.get(this.country)[
-        this.covidData.get(this.country).length - 1
-      ].relConfirmed;
+      return (
+        100 *
+        this.covidData.get(this.country)[this.lenCovidData - 1].relConfirmed
+      );
     }
     return 0;
   }
 
   getLastDeaths(): number {
     if (this.covidData) {
-      return this.covidData.get(this.country)[
-        this.covidData.get(this.country).length - 1
-      ].deaths;
+      return this.covidData.get(this.country)[this.lenCovidData - 1].deaths;
     }
     return 0;
   }
 
   getLastDeathsRelative(): number {
     if (this.covidData !== undefined) {
-      return 100 * this.covidData.get(this.country)[
-        this.covidData.get(this.country).length - 1
-      ].relDeaths;
+      return (
+        100 * this.covidData.get(this.country)[this.lenCovidData - 1].relDeaths
+      );
     }
     return 0;
   }
 
-  //getRelativeIncreasingRate(): number {
-  //if (this.covidConfirmed !== undefined) {
-  //const lengthData = this.covidConfirmed.get(this.country).length;
-  //return (
-  //(100 *
-  //(this.covidConfirmed.get(this.country)[lengthData - 1].confirmed -
-  //this.covidConfirmed.get(this.country)[lengthData - 2].confirmed)) /
-  //this.covidConfirmed.get(this.country)[lengthData - 1].confirmed
-  //);
-  //}
-  //return 0;
-  //}
-
-  //getLatestConfirmedNumber(): number {
-  //if (this.covidConfirmed !== undefined) {
-  //const lengthData = this.covidConfirmed.get(this.country).length;
-  //return this.covidConfirmed.get(this.country)[lengthData - 1].confirmed;
-  //}
-  //return 0;
-  //}
-
-  //getRelativeIncreasingRateDeaths(): number {
-  //if (this.covidDeaths !== undefined) {
-  //const lengthData = this.covidDeaths.get(this.country).length;
-  //return (
-  //(100 *
-  //(this.covidDeaths.get(this.country)[lengthData - 1].confirmed -
-  //this.covidDeaths.get(this.country)[lengthData - 2].confirmed)) /
-  //this.covidConfirmed.get(this.country)[lengthData - 1].confirmed
-  //);
-  //}
-  //return 0;
-  //}
-
-  //getLatestDeathsNumber(): number {
-  //if (this.covidConfirmed !== undefined) {
-  //const lengthData = this.covidConfirmed.get(this.country).length;
-  //return this.covidConfirmed.get(this.country)[lengthData - 1].confirmed;
-  //}
-  //return 0;
-  //}
+  private getDateLastEntry() {
+    this.lastUpdate = this.covidData.get(this.country)[
+      this.lenCovidData - 1
+    ].date;
+  }
 }
