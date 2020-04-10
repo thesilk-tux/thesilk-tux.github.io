@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ChartDataSets } from 'chart.js';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
 @Component({
@@ -12,13 +13,15 @@ export class LineChartComponent {
   @Input() dataValues: ChartDataSets[] = [{ data: [] }];
   @Input() dataLabels: Label[] = [];
 
-  lineChartOptions = {
+  faChartLine = faChartLine;
+
+  lineChartOptions: ChartOptions = {
     responsive: true,
   };
 
   lineChartColors: Color[] = [
     {
-      backgroundColor: 'rgba(255,255,0,0.28)',
+      backgroundColor: 'rgba(255,0,0,0.28)',
       borderColor: 'black',
     },
   ];
@@ -27,5 +30,23 @@ export class LineChartComponent {
   lineChartPlugins = [];
   lineChartType = 'line';
 
-  constructor() {}
+  private axisType = 'linear';
+
+  constructor() {
+    this.lineChartOptions = this.getChartOptions();
+  }
+
+  onChartType(axisType: string) {
+    this.axisType = axisType;
+    this.lineChartOptions = this.getChartOptions();
+  }
+
+  private getChartOptions(): ChartOptions {
+    return {
+      responsive: true,
+      scales: {
+        yAxes: [{ type: this.axisType, position: 'left' }],
+      },
+    };
+  }
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from '../app-routing.module';
@@ -10,6 +11,6 @@ import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [HeaderComponent, LineChartComponent, ProfileComponent],
   exports: [HeaderComponent, LineChartComponent, ProfileComponent],
-  imports: [AppRoutingModule, ChartsModule, CommonModule],
+  imports: [AppRoutingModule, ChartsModule, CommonModule, FontAwesomeModule],
 })
 export class GeneralModule {}

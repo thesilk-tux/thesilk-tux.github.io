@@ -5,6 +5,49 @@ div.line-chart {
 }
 
 h4 {
+  margin-left: 1.5rem;
+}
+
+div.line-chart-header {
+  margin-top: 0.5rem;
   margin-bottom: 2rem;
-  text-align: center;
+}
+
+div.line-chart-settings {
+  float: right;
+  width: 20%;
+  display: flex;
+  justify-content: right;
+  margin-right: 3.33333%;
+  box-sizing: border-box;
+  background-color: #343a40;
+}
+
+button {
+  background-color: #343a40;
+}
+
+div.line-chart-title {
+  float: left;
+  width: 72%;
+  margin-right: 2%;
+  box-sizing: border-box;
+}
+
+button.btn-secondary {
+  background-color: #343a40;
+  border: 0px none;
+}
+
+div.dropdown-menu {
+  background-color: #343a40;
+  border: 1px solid grey;
+}
+
+button.dropdown-item {
+  color: white;
+}
+
+button.dropdown-item:hover {
+  background-color: black;
 }
