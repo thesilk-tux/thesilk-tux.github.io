@@ -1,3 +1,9 @@
 div.container {
   margin-top: 2rem;
 }
+
+@media (min-device-width: 992px) {
+  div.container {
+    max-width: 75%;
+  }
+}
