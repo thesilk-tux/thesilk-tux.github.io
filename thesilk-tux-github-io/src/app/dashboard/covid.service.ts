@@ -1,6 +1,6 @@
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 interface ICovidData {
   date: string;
@@ -8,6 +8,8 @@ interface ICovidData {
   relConfirmed: number;
   deaths: number;
   relDeaths: number;
+  recovered: number;
+  relRecovered: number;
 }
 
 @Injectable({
@@ -19,7 +21,11 @@ export class CovidService {
 
   constructor(private http: HttpClient) {}
 
-  public getCovidData(dataConfirmed: string, dataDeaths: string): any {
+  getCovidData(
+    dataConfirmed: string,
+    dataDeaths: string,
+    dataRecovered: string
+  ): any {
     let date: string[] = dataConfirmed.split('\n')[0].split(',');
     date = date.slice(4, date.length);
 
@@ -27,6 +33,8 @@ export class CovidService {
     countryConfirmedRaw.shift();
     const countryDeathsRaw: string[] = dataDeaths.split('\n');
     countryDeathsRaw.shift();
+    const countryRecoveredRaw: string[] = dataRecovered.split('\n');
+    countryRecoveredRaw.shift();
 
     const covidData = new Map();
     let countryData: ICovidData[] = [];
@@ -36,15 +44,25 @@ export class CovidService {
       const confirmeRaw = countryConfirmedRaw[idx].split(',');
       const deathsRaw = countryDeathsRaw[idx].split(',');
       const country = confirmeRaw[1];
+      const recoveredRaw = this.getRecoveredCountryData(
+        countryRecoveredRaw,
+        country
+      );
+
       for (let i = 4; i < confirmeRaw.length; i++) {
         let relConfirmed = 0;
         let relDeaths = 0;
+        let relRecovered = 0;
         if (i > 4) {
           relConfirmed = this.calcRelative(
             +confirmeRaw[i],
             +confirmeRaw[i - 1]
           );
           relDeaths = this.calcRelative(+deathsRaw[i], +deathsRaw[i - 1]);
+          relRecovered = this.calcRelative(
+            +recoveredRaw[i],
+            +recoveredRaw[i - 1]
+          );
         }
         countryData.push({
           date: date[i - 4],
@@ -52,6 +70,8 @@ export class CovidService {
           relConfirmed,
           deaths: +deathsRaw[i],
           relDeaths,
+          recovered: +recoveredRaw[i],
+          relRecovered,
         });
       }
       if (covidData.get(country) === undefined) {
@@ -67,6 +87,15 @@ export class CovidService {
     return covidData;
   }
 
+  private getRecoveredCountryData(data: string[], country: string): string[] {
+    for (const countryData of data) {
+      if (country === countryData.split(',')[1]) {
+        return countryData.split(',');
+      }
+    }
+    return [];
+  }
+
   getConfirmedCovidRawData(): Observable<any> {
     const csvFile = 'time_series_covid19_confirmed_global.csv';
     const headers = new HttpHeaders().set(
@@ -79,7 +108,31 @@ export class CovidService {
     });
   }
 
-  private calcRelative(cur, prev): number {
+  getDeathsCovidRawData(): Observable<any> {
+    const csvFile = 'time_series_covid19_deaths_global.csv';
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'text/plain; charset=utf-8'
+    );
+    return this.http.get(this.urlGithubRaw + csvFile, {
+      headers,
+      responseType: 'text',
+    });
+  }
+
+  getRecoveredCovidRawData(): Observable<any> {
+    const csvFile = 'time_series_covid19_recovered_global.csv';
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'text/plain; charset=utf-8'
+    );
+    return this.http.get(this.urlGithubRaw + csvFile, {
+      headers,
+      responseType: 'text',
+    });
+  }
+
+  private calcRelative(cur: number, prev: number): number {
     if (cur > 0) {
       return +((cur - prev) / cur).toFixed(4);
     }
@@ -115,17 +168,5 @@ export class CovidService {
       });
     }
     return sumData;
-  }
-
-  getDeathsCovidRawData(): Observable<any> {
-    const csvFile = 'time_series_covid19_deaths_global.csv';
-    const headers = new HttpHeaders().set(
-      'Content-Type',
-      'text/plain; charset=utf-8'
-    );
-    return this.http.get(this.urlGithubRaw + csvFile, {
-      headers,
-      responseType: 'text',
-    });
   }
 }

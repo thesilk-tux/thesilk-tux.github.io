@@ -18,12 +18,16 @@ export class CovidViewComponent implements OnInit {
   ngOnInit(): void {
     this.covidService.getConfirmedCovidRawData().subscribe((resConfirmed) => {
       this.covidService.getDeathsCovidRawData().subscribe((resDeaths) => {
-        this.covidData = this.covidService.getCovidData(
-          resConfirmed,
-          resDeaths
-        );
-        this.lenCovidData = this.covidData.get(this.country).length;
-        this.getDateLastEntry();
+        this.covidService.getRecoveredCovidRawData().subscribe((resRecovered) => {
+          this.covidData = this.covidService.getCovidData(
+            resConfirmed,
+            resDeaths,
+            resRecovered
+          );
+          console.log(this.covidData);
+          this.lenCovidData = this.covidData.get(this.country).length;
+          this.getDateLastEntry();
+        });
       });
     });
   }

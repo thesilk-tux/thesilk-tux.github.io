@@ -9,11 +9,11 @@ import { ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 
 @Component({
-  selector: 'app-confirmed-total-line-chart',
-  templateUrl: './confirmed-total-line-chart.component.html',
-  styleUrls: ['./confirmed-total-line-chart.component.scss'],
+  selector: 'app-deaths-total-relative-line-chart',
+  templateUrl: './deaths-total-relative-line-chart.component.html',
+  styleUrls: ['./deaths-total-relative-line-chart.component.scss']
 })
-export class ConfirmedTotalLineChartComponent implements OnChanges, OnInit {
+export class DeathsTotalRelativeLineChartComponent implements OnChanges, OnInit {
   @Input() data: Map<string, any[]>;
   @Input() country: string;
 
@@ -24,13 +24,13 @@ export class ConfirmedTotalLineChartComponent implements OnChanges, OnInit {
 
   ngOnInit(): void {
     this.getDates();
-    this.getConfirmedTotal();
+    this.getConfirmedNewDaily();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('data' in changes) {
       this.getDates();
-      this.getConfirmedTotal();
+      this.getConfirmedNewDaily();
     }
   }
 
@@ -44,11 +44,11 @@ export class ConfirmedTotalLineChartComponent implements OnChanges, OnInit {
     }
   }
 
-  private getConfirmedTotal() {
+  private getConfirmedNewDaily() {
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {
-          this.dataSet[0].data.push(data.confirmed);
+            this.dataSet[0].data.push(100 * data.relDeaths);
         }
       }
     }

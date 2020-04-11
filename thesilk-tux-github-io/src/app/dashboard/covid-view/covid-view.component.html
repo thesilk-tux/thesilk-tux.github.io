@@ -16,7 +16,44 @@
       [relativeValue]="getLastDeathsRelative()"
     ></app-dashboard-card>
   </div>
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-    <app-confirmed-total-line-chart [data]="covidData" [country]="country"></app-confirmed-total-line-chart>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-confirmed-total-line-chart [data]="covidData" [country]="country"></app-confirmed-total-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-deaths-total-line-chart [data]="covidData" [country]="country"></app-deaths-total-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-confirmed-new-daily-line-chart [data]="covidData" [country]="country"></app-confirmed-new-daily-line-chart>
+   </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-deaths-new-daily-line-chart [data]="covidData" [country]="country"></app-deaths-new-daily-line-chart>
+   </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-confirmed-total-relative-line-chart [data]="covidData" [country]="country"></app-confirmed-total-relative-line-chart>
+   </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-deaths-total-relative-line-chart [data]="covidData" [country]="country"></app-deaths-total-relative-line-chart>
+   </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-recovered-total-line-chart [data]="covidData" [country]="country"></app-recovered-total-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-recovered-new-daily-line-chart [data]="covidData" [country]="country"></app-recovered-new-daily-line-chart>
+   </div>
   </div>
 </div>
