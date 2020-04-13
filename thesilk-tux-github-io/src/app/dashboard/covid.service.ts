@@ -44,6 +44,12 @@ export class CovidService {
       const confirmeRaw = countryConfirmedRaw[idx].split(',');
       const deathsRaw = countryDeathsRaw[idx].split(',');
       const country = confirmeRaw[1];
+
+      // collect all country data of recovered and sum that because recovered csv colums
+      // doesn't match with confirmed and deaths
+      // don't handle recovered in sum method
+      // TODO: handle also confirmed and deaths like recovered because it is
+      //       more resilent
       const recoveredRaw = this.getRecoveredCountryData(
         countryRecoveredRaw,
         country
@@ -88,12 +94,20 @@ export class CovidService {
   }
 
   private getRecoveredCountryData(data: string[], country: string): string[] {
+    const countryRecoveredData: number[] = new Array(
+      data[1].split(',').length - 4
+    ).fill(0);
     for (const countryData of data) {
       if (country === countryData.split(',')[1]) {
-        return countryData.split(',');
+        for (const [i, v] of countryData
+          .split(',')
+          .slice(4, countryData.split(',').length)
+          .entries()) {
+          countryRecoveredData[i] = countryRecoveredData[i] + +v;
+        }
       }
     }
-    return [];
+    return ['', country, '', ''].concat(countryRecoveredData.map(String));
   }
 
   getConfirmedCovidRawData(): Observable<any> {
@@ -163,8 +177,10 @@ export class CovidService {
         date: v.date,
         confirmed: v.confirmed + data[i].confirmed,
         deaths: v.deaths + data[i].deaths,
+        recovered: v.recovered,
         relConfirmed,
         relDeaths,
+        relRecovered: v.relRecovered,
       });
     }
     return sumData;

@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { GeneralModule } from 'src/app/general/general.module';
+import { LineChartComponent } from 'src/app/general/line-chart/line-chart.component';
 import { ConfirmedTotalLineChartComponent } from './confirmed-total-line-chart.component';
 
 describe('ConfirmedTotalLineChartComponent', () => {
@@ -8,7 +10,8 @@ describe('ConfirmedTotalLineChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfirmedTotalLineChartComponent ]
+      declarations: [ ConfirmedTotalLineChartComponent, LineChartComponent ],
+      imports: [GeneralModule],
     })
     .compileComponents();
   }));

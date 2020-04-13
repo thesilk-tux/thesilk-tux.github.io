@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { GeneralModule } from 'src/app/general/general.module';
+import { LineChartComponent } from 'src/app/general/line-chart/line-chart.component';
 import { ConfirmedTotalRelativeLineChartComponent } from './confirmed-total-relative-line-chart.component';
 
 describe('ConfirmedTotalRelativeLineChartComponent', () => {
@@ -8,7 +10,8 @@ describe('ConfirmedTotalRelativeLineChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfirmedTotalRelativeLineChartComponent ]
+      declarations: [ ConfirmedTotalRelativeLineChartComponent, LineChartComponent ],
+      imports: [GeneralModule],
     })
     .compileComponents();
   }));

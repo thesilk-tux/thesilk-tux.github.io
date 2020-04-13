@@ -11,7 +11,7 @@ import { Label } from 'ng2-charts';
 @Component({
   selector: 'app-deaths-total-line-chart',
   templateUrl: './deaths-total-line-chart.component.html',
-  styleUrls: ['./deaths-total-line-chart.component.scss']
+  styleUrls: ['./deaths-total-line-chart.component.scss'],
 })
 export class DeathsTotalLineChartComponent implements OnChanges, OnInit {
   @Input() data: Map<string, any[]>;
@@ -28,13 +28,12 @@ export class DeathsTotalLineChartComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('data' in changes) {
-      this.getDates();
-      this.getConfirmedTotal();
-    }
+    this.getDates();
+    this.getConfirmedTotal();
   }
 
   private getDates() {
+    this.labels = [];
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {
@@ -45,6 +44,7 @@ export class DeathsTotalLineChartComponent implements OnChanges, OnInit {
   }
 
   private getConfirmedTotal() {
+    this.dataSet[0].data = [];
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {

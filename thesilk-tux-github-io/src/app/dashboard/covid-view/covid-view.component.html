@@ -1,59 +1,100 @@
 <h1>Covid-19 Dashboard</h1>
-<h6>Stand: {{lastUpdate}}</h6>
-<h6 class="data-source">Source: <a href="https://github.com/CSSEGISandData/COVID-19">CSSEGISandData</a></h6>
+<h6>Stand: {{ lastUpdate }}</h6>
+<h6 class="data-source">
+  Datenquelle:
+  <a href="https://github.com/CSSEGISandData/COVID-19">CSSEGISandData</a>
+</h6>
+
+<div class="sticky-country-selection">
+  <select id="country" class="country-selection" formControlName="country" (change)="onCountryChange($event)">
+    <option *ngFor="let key of keys" [value]="countries[key]">{{ key }}</option>
+  </select>
+</div>
+
 <div class="row">
-  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
     <app-dashboard-card
       caption="Bestätigte Fälle"
       [absoluteValue]="getLastConfirmed()"
       [relativeValue]="getLastConfirmedRelative()"
     ></app-dashboard-card>
   </div>
-  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
     <app-dashboard-card
       caption="Todesfälle"
       [absoluteValue]="getLastDeaths()"
       [relativeValue]="getLastDeathsRelative()"
     ></app-dashboard-card>
   </div>
+  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+    <app-dashboard-card
+      caption="Genesene"
+      [absoluteValue]="getLastRecovered()"
+      [relativeValue]="getLastRecoveredRelative()"
+    ></app-dashboard-card>
+  </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <div class="line-chart">
-      <app-confirmed-total-line-chart [data]="covidData" [country]="country"></app-confirmed-total-line-chart>
+      <app-confirmed-total-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-confirmed-total-line-chart>
     </div>
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <div class="line-chart">
-      <app-deaths-total-line-chart [data]="covidData" [country]="country"></app-deaths-total-line-chart>
+      <app-deaths-total-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-deaths-total-line-chart>
     </div>
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <div class="line-chart">
-      <app-confirmed-new-daily-line-chart [data]="covidData" [country]="country"></app-confirmed-new-daily-line-chart>
-   </div>
-  </div>
-  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-    <div class="line-chart">
-      <app-deaths-new-daily-line-chart [data]="covidData" [country]="country"></app-deaths-new-daily-line-chart>
-   </div>
-  </div>
-  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-    <div class="line-chart">
-      <app-confirmed-total-relative-line-chart [data]="covidData" [country]="country"></app-confirmed-total-relative-line-chart>
-   </div>
-  </div>
-  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-    <div class="line-chart">
-      <app-deaths-total-relative-line-chart [data]="covidData" [country]="country"></app-deaths-total-relative-line-chart>
-   </div>
-  </div>
-  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-    <div class="line-chart">
-      <app-recovered-total-line-chart [data]="covidData" [country]="country"></app-recovered-total-line-chart>
+      <app-confirmed-new-daily-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-confirmed-new-daily-line-chart>
     </div>
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <div class="line-chart">
-      <app-recovered-new-daily-line-chart [data]="covidData" [country]="country"></app-recovered-new-daily-line-chart>
-   </div>
+      <app-deaths-new-daily-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-deaths-new-daily-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-confirmed-total-relative-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-confirmed-total-relative-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-deaths-total-relative-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-deaths-total-relative-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-recovered-total-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-recovered-total-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-recovered-new-daily-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-recovered-new-daily-line-chart>
+    </div>
   </div>
 </div>

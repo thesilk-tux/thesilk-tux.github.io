@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { GeneralModule } from 'src/app/general/general.module';
+import { LineChartComponent } from 'src/app/general/line-chart/line-chart.component';
 import { DeathsTotalRelativeLineChartComponent } from './deaths-total-relative-line-chart.component';
 
 describe('DeathsTotalRelativeLineChartComponent', () => {
@@ -8,9 +10,9 @@ describe('DeathsTotalRelativeLineChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeathsTotalRelativeLineChartComponent ]
-    })
-    .compileComponents();
+      declarations: [DeathsTotalRelativeLineChartComponent, LineChartComponent],
+      imports: [GeneralModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

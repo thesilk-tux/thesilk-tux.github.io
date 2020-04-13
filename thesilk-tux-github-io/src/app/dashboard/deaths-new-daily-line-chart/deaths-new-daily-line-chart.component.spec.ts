@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { GeneralModule } from 'src/app/general/general.module';
+import { LineChartComponent } from 'src/app/general/line-chart/line-chart.component';
 import { DeathsNewDailyLineChartComponent } from './deaths-new-daily-line-chart.component';
 
 describe('DeathsNewDailyLineChartComponent', () => {
@@ -8,7 +10,8 @@ describe('DeathsNewDailyLineChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeathsNewDailyLineChartComponent ]
+      declarations: [ DeathsNewDailyLineChartComponent, LineChartComponent ],
+      imports: [GeneralModule],
     })
     .compileComponents();
   }));

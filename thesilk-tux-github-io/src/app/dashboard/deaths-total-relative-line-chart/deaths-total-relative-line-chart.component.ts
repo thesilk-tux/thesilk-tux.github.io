@@ -11,9 +11,10 @@ import { Label } from 'ng2-charts';
 @Component({
   selector: 'app-deaths-total-relative-line-chart',
   templateUrl: './deaths-total-relative-line-chart.component.html',
-  styleUrls: ['./deaths-total-relative-line-chart.component.scss']
+  styleUrls: ['./deaths-total-relative-line-chart.component.scss'],
 })
-export class DeathsTotalRelativeLineChartComponent implements OnChanges, OnInit {
+export class DeathsTotalRelativeLineChartComponent
+  implements OnChanges, OnInit {
   @Input() data: Map<string, any[]>;
   @Input() country: string;
 
@@ -28,13 +29,12 @@ export class DeathsTotalRelativeLineChartComponent implements OnChanges, OnInit 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('data' in changes) {
-      this.getDates();
-      this.getConfirmedNewDaily();
-    }
+    this.getDates();
+    this.getConfirmedNewDaily();
   }
 
   private getDates() {
+    this.labels = [];
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {
@@ -45,10 +45,11 @@ export class DeathsTotalRelativeLineChartComponent implements OnChanges, OnInit 
   }
 
   private getConfirmedNewDaily() {
+    this.dataSet[0].data = [];
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {
-            this.dataSet[0].data.push(100 * data.relDeaths);
+          this.dataSet[0].data.push(100 * data.relDeaths);
         }
       }
     }

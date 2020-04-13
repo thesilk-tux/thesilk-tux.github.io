@@ -11,3 +11,9 @@ img.nav-img {
 button.navbar-toggler {
   box-shadow: 3px 3px 2px black;
 }
+
+@media (min-device-width: 992px) {
+  div.container {
+    max-width: 75%;
+  }
+}

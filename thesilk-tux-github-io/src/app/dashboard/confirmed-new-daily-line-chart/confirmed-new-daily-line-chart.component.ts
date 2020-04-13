@@ -28,13 +28,12 @@ export class ConfirmedNewDailyLineChartComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('data' in changes) {
       this.getDates();
       this.getConfirmedNewDaily();
-    }
   }
 
   private getDates() {
+    this.labels = [];
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {
@@ -45,6 +44,7 @@ export class ConfirmedNewDailyLineChartComponent implements OnChanges, OnInit {
   }
 
   private getConfirmedNewDaily() {
+    this.dataSet[0].data = [];
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const [i, val] of this.data.get(this.country).entries()) {

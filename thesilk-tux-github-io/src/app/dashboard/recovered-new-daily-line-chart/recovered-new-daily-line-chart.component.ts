@@ -11,7 +11,7 @@ import { Label } from 'ng2-charts';
 @Component({
   selector: 'app-recovered-new-daily-line-chart',
   templateUrl: './recovered-new-daily-line-chart.component.html',
-  styleUrls: ['./recovered-new-daily-line-chart.component.scss']
+  styleUrls: ['./recovered-new-daily-line-chart.component.scss'],
 })
 export class RecoveredNewDailyLineChartComponent implements OnChanges, OnInit {
   @Input() data: Map<string, any[]>;
@@ -28,13 +28,12 @@ export class RecoveredNewDailyLineChartComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('data' in changes) {
-      this.getDates();
-      this.getConfirmedNewDaily();
-    }
+    this.getDates();
+    this.getConfirmedNewDaily();
   }
 
   private getDates() {
+    this.labels = [];
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {
@@ -45,12 +44,13 @@ export class RecoveredNewDailyLineChartComponent implements OnChanges, OnInit {
   }
 
   private getConfirmedNewDaily() {
+    this.dataSet[0].data = [];
     if (this.data) {
       if (this.data.get(this.country)) {
         for (const [i, val] of this.data.get(this.country).entries()) {
           if (i > 0) {
             const newRecovered =
-              (val.recovered - this.data.get(this.country)[i - 1].recovered);
+              val.recovered - this.data.get(this.country)[i - 1].recovered;
             this.dataSet[0].data.push(newRecovered);
           } else {
             this.dataSet[0].data.push(0);
