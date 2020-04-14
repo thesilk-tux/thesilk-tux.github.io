@@ -18,7 +18,7 @@ div.line-chart-settings {
   width: 20%;
   display: flex;
   justify-content: right;
-  margin-right: 3.33333%;
+  margin-right: 1rem;
   box-sizing: border-box;
   background-color: #343a40;
 }
@@ -50,4 +50,10 @@ button.dropdown-item {
 
 button.dropdown-item:hover {
   background-color: black;
+}
+
+@media (max-device-width: 767px) {
+  h4 {
+    font-size: 1rem;
+  }
 }

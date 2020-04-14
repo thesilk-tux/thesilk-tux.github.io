@@ -28,8 +28,8 @@ export class ConfirmedNewDailyLineChartComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      this.getDates();
-      this.getConfirmedNewDaily();
+    this.getDates();
+    this.getConfirmedNewDaily();
   }
 
   private getDates() {
@@ -50,7 +50,7 @@ export class ConfirmedNewDailyLineChartComponent implements OnChanges, OnInit {
         for (const [i, val] of this.data.get(this.country).entries()) {
           if (i > 0) {
             const newConfirmed =
-              (val.confirmed - this.data.get(this.country)[i - 1].confirmed);
+              val.confirmed - this.data.get(this.country)[i - 1].confirmed;
             this.dataSet[0].data.push(newConfirmed);
           } else {
             this.dataSet[0].data.push(0);
