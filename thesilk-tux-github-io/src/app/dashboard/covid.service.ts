@@ -2,15 +2,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-interface ICovidData {
-  date: string;
-  confirmed: number;
-  relConfirmed: number;
-  deaths: number;
-  relDeaths: number;
-  recovered: number;
-  relRecovered: number;
-}
+import { ICovidData, ICountryPopulation } from './covid.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +12,10 @@ export class CovidService {
     'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/';
 
   constructor(private http: HttpClient) {}
+
+  getCountryPopulation(): Observable<ICountryPopulation[]> {
+    return this.http.get<ICountryPopulation[]>('assets/countries.json');
+  }
 
   getCovidData(
     dataConfirmed: string,

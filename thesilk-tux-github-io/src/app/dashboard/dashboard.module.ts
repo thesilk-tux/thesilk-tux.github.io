@@ -12,6 +12,7 @@ import { DeathsTotalLineChartComponent } from './deaths-total-line-chart/deaths-
 import { DeathsNewDailyLineChartComponent } from './deaths-new-daily-line-chart/deaths-new-daily-line-chart.component';
 import { RecoveredTotalLineChartComponent } from './recovered-total-line-chart/recovered-total-line-chart.component';
 import { RecoveredNewDailyLineChartComponent } from './recovered-new-daily-line-chart/recovered-new-daily-line-chart.component';
+import { ConfirmedPopulationComponent } from './confirmed-population/confirmed-population.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RecoveredNewDailyLineChartComponent } from './recovered-new-daily-line-
     DeathsNewDailyLineChartComponent,
     RecoveredTotalLineChartComponent,
     RecoveredNewDailyLineChartComponent,
+    ConfirmedPopulationComponent,
   ],
   imports: [CommonModule, GeneralModule],
 })

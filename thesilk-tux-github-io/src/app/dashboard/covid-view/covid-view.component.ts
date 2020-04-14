@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CovidService } from '../covid.service';
 
 import { Countries } from '../covid.enum';
+import { ICovidData, ICountryPopulation } from '../covid.interface';
 
 @Component({
   selector: 'app-covid-view',
@@ -9,14 +10,13 @@ import { Countries } from '../covid.enum';
   styleUrls: ['./covid-view.component.scss'],
 })
 export class CovidViewComponent implements OnInit {
-  country = 'Germany';
   lastUpdate = new Date().toLocaleString();
+  country: string;
   countries = Countries;
   keys: any[];
 
-  private favoriteCountries: string[] = ['Germany'];
-
-  covidData: Map<string, any[]>;
+  covidData: Map<string, ICovidData[]>;
+  population: ICountryPopulation[] = [];
   private lenCovidData = 1;
 
   constructor(private covidService: CovidService) {
@@ -25,19 +25,22 @@ export class CovidViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.covidService.getConfirmedCovidRawData().subscribe((resConfirmed) => {
-      this.covidService.getDeathsCovidRawData().subscribe((resDeaths) => {
-        this.covidService
-          .getRecoveredCovidRawData()
-          .subscribe((resRecovered) => {
-            this.covidData = this.covidService.getCovidData(
-              resConfirmed,
-              resDeaths,
-              resRecovered
-            );
-            this.lenCovidData = this.covidData.get(this.country).length;
-            this.getDateLastEntry();
-          });
+    this.covidService.getCountryPopulation().subscribe((resPopulation) => {
+      this.covidService.getConfirmedCovidRawData().subscribe((resConfirmed) => {
+        this.covidService.getDeathsCovidRawData().subscribe((resDeaths) => {
+          this.covidService
+            .getRecoveredCovidRawData()
+            .subscribe((resRecovered) => {
+              this.covidData = this.covidService.getCovidData(
+                resConfirmed,
+                resDeaths,
+                resRecovered
+              );
+              this.lenCovidData = this.covidData.get(this.country).length;
+              this.getDateLastEntry();
+              this.population = resPopulation;
+            });
+        });
       });
     });
   }
