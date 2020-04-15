@@ -143,8 +143,8 @@ export class CovidService {
   }
 
   private calcRelative(cur: number, prev: number): number {
-    if (cur > 0) {
-      return +((cur - prev) / cur).toFixed(4);
+    if (prev > 0) {
+      return +(cur / prev - 1).toFixed(4);
     }
     return 0;
   }
