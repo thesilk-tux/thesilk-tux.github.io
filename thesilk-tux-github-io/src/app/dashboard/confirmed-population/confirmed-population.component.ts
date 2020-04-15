@@ -30,7 +30,6 @@ export class ConfirmedPopulationComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     this.getDates();
     this.getConfirmedPopulation();
   }
@@ -54,7 +53,6 @@ export class ConfirmedPopulationComponent implements OnChanges, OnInit {
       )[0].population;
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {
-          console.log(data.confirmed);
           this.dataSet[0].data.push(
             (100000 * data.confirmed) / countryPopulation
           );

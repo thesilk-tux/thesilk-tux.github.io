@@ -29,7 +29,6 @@ export class ConfirmedCurrentlyLineChartComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     this.getDates();
     this.getConfirmedCurrently();
   }
@@ -48,7 +47,6 @@ export class ConfirmedCurrentlyLineChartComponent implements OnChanges, OnInit {
   private getConfirmedCurrently() {
     this.dataSet[0].data = [];
     if (this.data) {
-      console.log(this.data);
       if (this.data.get(this.country)) {
         for (const data of this.data.get(this.country)) {
             this.dataSet[0].data.push(data.confirmed - data.deaths - data.recovered);
