@@ -16,9 +16,26 @@
           class="dropdown-menu dropdown-menu-right"
           aria-labelledby="line-chart-settings-dropdown"
         >
-          <button class="dropdown-item" type="button" (click)="onChartType('linear')">Linear</button>
-          <button class="dropdown-item" type="button" (click)="onChartType('logarithmic')">Halb-Logarithmisch</button>
+          <button
+            class="dropdown-item"
+            type="button"
+            (click)="onChartType('linear')"
+          >
+            Linear
+          </button>
+          <button
+            class="dropdown-item"
+            type="button"
+            (click)="onChartType('logarithmic')"
+          >
+            Halb-Logarithmisch
+          </button>
         </div>
+      </div>
+      <div class="moving-average">
+        <button class="btn btn-secondary moving-average-toggle" (click)="onMovingAverage()">
+          <fa-icon [icon]="faBalanceScale"></fa-icon>
+        </button>
       </div>
     </div>
     <div class="line-chart-title">

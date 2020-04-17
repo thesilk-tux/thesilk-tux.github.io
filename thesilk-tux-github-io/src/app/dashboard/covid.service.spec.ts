@@ -1,7 +1,8 @@
-import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { CovidService } from './covid.service';
+import { ICovidData } from './covid.interface';
 
 describe('CovidService', () => {
   let service: CovidService;
@@ -84,7 +85,11 @@ describe('CovidService', () => {
       'Province/State,Country/Region,Lat,Long,1/22/20,1/23/20,1/24/20\nProvence 1,Australia,x,y,0,2,2\nProvence 2,Australia,x,y,0,0,2\n ,Germany,x,y,2,2,4';
     const dataRecovered =
       'Province/State,Country/Region,Lat,Long,1/22/20,1/23/20,1/24/20\nProvence 1,Australia,x,y,1,2,3\nProvence 2,Australia,x,y,4,5,6\n ,Germany,x,y,2,2,4';
-    const covidMap = service.getCovidData(dataConfirmed, dataDeaths, dataRecovered);
+    const covidMap = service.getCovidData(
+      dataConfirmed,
+      dataDeaths,
+      dataRecovered
+    );
     expect(covidMap).toEqual(expected);
   });
 });
