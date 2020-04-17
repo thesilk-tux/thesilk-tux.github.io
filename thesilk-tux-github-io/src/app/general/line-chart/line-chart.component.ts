@@ -83,7 +83,7 @@ export class LineChartComponent implements OnChanges, OnInit {
       values.push(+item.toString());
     }
 
-    const trailingZeros = new Array(this.movingAverageDays).fill(0);
+    const trailingZeros = new Array(this.movingAverageDays - 1).fill(0);
     const movAvg = trailingZeros.concat(
       this.statisticService.getMovingAverage(values, this.movingAverageDays)
     );
