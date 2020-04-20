@@ -5,7 +5,9 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { faBalanceScale, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCogs,
+} from '@fortawesome/free-solid-svg-icons';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { StatisticService } from 'src/app/dashboard/statistic.service';
@@ -20,9 +22,9 @@ export class LineChartComponent implements OnChanges, OnInit {
   @Input() dataValues: ChartDataSets[] = [{ data: [] }];
   @Input() dataLabels: Label[] = [];
   @Input() movingAverageDays = 1;
+  @Input() chartID: string;
 
-  faChartLine = faChartLine;
-  faBalanceScale = faBalanceScale;
+  faCogs = faCogs;
 
   lineChartOptions: ChartOptions = {
     responsive: true,
@@ -72,6 +74,22 @@ export class LineChartComponent implements OnChanges, OnInit {
     }
   }
 
+  getChartTypeLinearID() {
+    return 'chartTypeLinear' + this.chartID;
+  }
+
+  getChartTypeLogarithmicID() {
+    return 'chartTypeLogarithmic' + this.chartID;
+  }
+
+  getMovingAverageID() {
+    return 'chartMovingAverage' + this.chartID;
+  }
+
+  getMovingAverageText() {
+    return this.movingAverageDays === 1 ? 'Aktivieren' : 'Deaktivieren';
+  }
+
   private showMovingAverage() {
     this.lineChartLegend = true;
 
@@ -89,7 +107,7 @@ export class LineChartComponent implements OnChanges, OnInit {
     );
     if (movAvg.length > this.movingAverageDays) {
       this.dataValues.push({ data: movAvg });
-      this.dataValues[1].label = 'Gleitender Durchschnitt 7 Tage'
+      this.dataValues[1].label = 'Gleitender Durchschnitt 7 Tage';
       this.lineChartColors.push({
         backgroundColor: 'rgba(0,250,0,0.28)',
         borderColor: 'black',

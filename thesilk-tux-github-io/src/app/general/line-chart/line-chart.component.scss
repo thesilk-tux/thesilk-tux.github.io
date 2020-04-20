@@ -10,16 +10,19 @@ h4 {
 
 div.line-chart-header {
   margin-top: 0.5rem;
-  margin-bottom: 2rem;
 }
 
 div.line-chart-settings {
-  float: right;
   display: flex;
   justify-content: right;
-  margin-right: 1rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
   box-sizing: border-box;
   background-color: #343a40;
+}
+
+div.line-chart-settings-dropdown {
+  margin-right: 0.25rem;
 }
 
 button {
@@ -28,7 +31,7 @@ button {
 
 div.line-chart-title {
   float: left;
-  width: 63%;
+  width: 90%;
   margin-right: 2%;
   box-sizing: border-box;
   padding-top: 0.25rem;
@@ -40,8 +43,11 @@ button.btn-secondary {
 }
 
 div.dropdown-menu {
+  color: white;
   background-color: #343a40;
   border: 1px solid grey;
+  width: 288px;
+  padding: 0.75rem 0.75rem;
 }
 
 div.moving-average {
@@ -54,6 +60,10 @@ button.dropdown-item {
 
 button.dropdown-item:hover {
   background-color: black;
+}
+
+li.dropdown-item {
+  color: white;
 }
 
 @media (max-device-width: 767px) {

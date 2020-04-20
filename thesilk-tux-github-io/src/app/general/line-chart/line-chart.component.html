@@ -1,45 +1,68 @@
 <div class="line-chart">
   <div class="line-chart-header">
     <div class="line-chart-settings">
-      <div class="dropdown">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="line-chart-settings-dropdown"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <fa-icon [icon]="faChartLine"></fa-icon>
-        </button>
-        <div
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="line-chart-settings-dropdown"
-        >
+      <div class="line-chart-title">
+        <h4>{{ topic }}</h4>
+      </div>
+      <div class="line-chart-settings-dropdown">
+        <div class="dropdown">
           <button
-            class="dropdown-item"
+            class="btn btn-secondary dropdown-toggle"
             type="button"
-            (click)="onChartType('linear')"
+            id="line-chart-settings-dropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
           >
-            Linear
+            <fa-icon [icon]="faCogs"></fa-icon>
           </button>
-          <button
-            class="dropdown-item"
-            type="button"
-            (click)="onChartType('logarithmic')"
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="line-chart-settings-dropdown"
           >
-            Halb-Logarithmisch
-          </button>
+            <form>
+              <legend>Chart Typ</legend>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary" [for]="getChartTypeLinearID()">
+                  <input
+                    type="radio"
+                    name="options"
+                    [id]="getChartTypeLinearID()"
+                    (click)="onChartType('linear')"
+                    checked
+                  />
+                  Linear
+                </label>
+                <label
+                  class="btn btn-secondary"
+                  [for]="getChartTypeLogarithmicID()"
+                >
+                  <input
+                    type="radio"
+                    name="options"
+                    [id]="getChartTypeLogarithmicID()"
+                    (click)="onChartType('logarithmic')"
+                  />
+                  Logarithmisch
+                </label>
+              </div>
+              <legend>Gleitender Durchschnitt</legend>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary" [for]="getMovingAverageID()">
+                  <input
+                    type="checkbox"
+                    name="options"
+                    [id]="getMovingAverageID()"
+                    (click)="onMovingAverage()"
+                    checked
+                  />
+                  {{ getMovingAverageText() }}
+                </label>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      <div class="moving-average">
-        <button class="btn btn-secondary moving-average-toggle" (click)="onMovingAverage()">
-          <fa-icon [icon]="faBalanceScale"></fa-icon>
-        </button>
-      </div>
-    </div>
-    <div class="line-chart-title">
-      <h4>{{ topic }}</h4>
     </div>
   </div>
   <div class="chart-wrapper">
