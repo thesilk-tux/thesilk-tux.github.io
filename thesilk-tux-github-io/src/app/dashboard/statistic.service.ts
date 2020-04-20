@@ -14,7 +14,7 @@ export class StatisticService {
 
     let startIndex = 0;
     for (let i = days; i <= data.length; i++) {
-      movingAvg.push(data.slice(startIndex, i).reduce(reducer) / days);
+      movingAvg.push(+(data.slice(startIndex, i).reduce(reducer) / days).toFixed(2));
       startIndex++;
     }
     return movingAvg;
