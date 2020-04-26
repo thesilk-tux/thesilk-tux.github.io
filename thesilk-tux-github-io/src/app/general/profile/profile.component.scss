@@ -33,5 +33,9 @@ p.profile-quote {
 p.profile-quote-origin {
   @extend %profile-quote;
   color: lightgrey;
-  padding-left: 20%;
+  text-align: center;
+}
+
+div.social-button {
+  padding-bottom: 1rem;
 }
