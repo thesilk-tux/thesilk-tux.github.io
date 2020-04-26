@@ -95,6 +95,16 @@ export class CovidViewComponent implements OnInit {
     return 0;
   }
 
+  getLastCFR(): number {
+    if (this.covidData) {
+      return +(
+        (100 * this.covidData.get(this.country)[this.lenCovidData - 1].deaths) /
+        this.covidData.get(this.country)[this.lenCovidData - 1].confirmed
+      ).toFixed(2);
+    }
+    return 0;
+  }
+
   onCountryChange(event: any) {
     this.country = event.target.value;
   }

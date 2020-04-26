@@ -14,6 +14,7 @@ import { RecoveredTotalLineChartComponent } from './recovered-total-line-chart/r
 import { RecoveredNewDailyLineChartComponent } from './recovered-new-daily-line-chart/recovered-new-daily-line-chart.component';
 import { ConfirmedPopulationComponent } from './confirmed-population/confirmed-population.component';
 import { ConfirmedCurrentlyLineChartComponent } from './confirmed-currently-line-chart/confirmed-currently-line-chart.component';
+import { CfrLineChartComponent } from './cfr-line-chart/cfr-line-chart.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ConfirmedCurrentlyLineChartComponent } from './confirmed-currently-line
     RecoveredNewDailyLineChartComponent,
     ConfirmedPopulationComponent,
     ConfirmedCurrentlyLineChartComponent,
+    CfrLineChartComponent,
   ],
   imports: [CommonModule, GeneralModule],
 })

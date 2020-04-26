@@ -6,31 +6,43 @@
 </h6>
 
 <div class="sticky-country-selection">
-  <select id="country" class="country-selection" formControlName="country" (change)="onCountryChange($event)">
+  <select
+    id="country"
+    class="country-selection"
+    formControlName="country"
+    (change)="onCountryChange($event)"
+  >
     <option *ngFor="let key of keys" [value]="countries[key]">{{ key }}</option>
   </select>
 </div>
 
 <div class="row">
-  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
     <app-dashboard-card
       caption="Bestätigte Fälle"
       [absoluteValue]="getLastConfirmed()"
       [relativeValue]="getLastConfirmedRelative()"
     ></app-dashboard-card>
   </div>
-  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
     <app-dashboard-card
       caption="Todesfälle"
       [absoluteValue]="getLastDeaths()"
       [relativeValue]="getLastDeathsRelative()"
     ></app-dashboard-card>
   </div>
-  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
     <app-dashboard-card
       caption="Genesene"
       [absoluteValue]="getLastRecovered()"
       [relativeValue]="getLastRecoveredRelative()"
+    ></app-dashboard-card>
+  </div>
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
+    <app-dashboard-card
+      caption="Fallsterblickkeit"
+      [absoluteValue]="getLastCFR()"
+      absoluteUnit="%"
     ></app-dashboard-card>
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -87,7 +99,7 @@
         [data]="covidData"
         [population]="population"
         [country]="country"
-        ></app-confirmed-population>
+      ></app-confirmed-population>
     </div>
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -95,7 +107,7 @@
       <app-confirmed-currently-line-chart
         [data]="covidData"
         [country]="country"
-        ></app-confirmed-currently-line-chart>
+      ></app-confirmed-currently-line-chart>
     </div>
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -112,6 +124,14 @@
         [data]="covidData"
         [country]="country"
       ></app-recovered-new-daily-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
+      <app-cfr-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-cfr-line-chart>
     </div>
   </div>
 </div>
