@@ -128,10 +128,28 @@
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <div class="line-chart">
+      <app-reproduction-factor-line-chart
+        [data]="covidData"
+        [country]="country"
+      ></app-reproduction-factor-line-chart>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
       <app-cfr-line-chart
         [data]="covidData"
         [country]="country"
       ></app-cfr-line-chart>
     </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <p>
+      * Die Berechnung der Reproduktionszahl ist berechnet aus dem 7 Tagemittel
+      der täglich Neuinfizierten. Es wird von einer Generationszeit von 8 Tagen
+      ausgegangen (8 Tage ansteckend) und somit das eine Ansteckung
+      durchschnittlich nach 4 Tagen nach der Infektion erfolgt. Die berechnete
+      Reproduktionszahlen sind lediglich eine Näherung und nah an den
+      offiziellen Zahlen der landerspezifischen Instituten dran.
+    </p>
   </div>
 </div>
