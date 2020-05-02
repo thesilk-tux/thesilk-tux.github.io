@@ -70,5 +70,13 @@
   {
     "country": "Germany",
     "population": 83517046
+  },
+  {
+    "country": "Belgium",
+    "population": 11431406
+  },
+  {
+    "country": "World",
+    "population": 7594000000
   }
 ]
