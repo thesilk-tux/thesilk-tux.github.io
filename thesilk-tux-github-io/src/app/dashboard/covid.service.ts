@@ -32,6 +32,10 @@ export class CovidService {
     const countryRecoveredRaw: string[] = dataRecovered.split('\n');
     countryRecoveredRaw.shift();
 
+    countryConfirmedRaw.push(this.sumData(countryConfirmedRaw).join(','));
+    countryDeathsRaw.push(this.sumData(countryDeathsRaw).join(','));
+    countryRecoveredRaw.push(this.sumData(countryRecoveredRaw).join(','));
+
     const covidData = new Map();
     let countryData: ICovidData[] = [];
 
@@ -87,6 +91,20 @@ export class CovidService {
     }
 
     return covidData;
+  }
+
+  private sumData(covidData): string[] {
+    let world = new Array(covidData[0].length - 4).fill('0');
+    for (const data of covidData) {
+      if (data.length > 0) {
+        world = data
+          .split(',')
+          .splice(4, data.length - 1)
+          .map((value, index) => (+value + +world[index]).toString());
+      }
+    }
+    return ['', 'World', '', ''].concat(world);
+
   }
 
   private getRecoveredCountryData(data: string[], country: string): string[] {

@@ -2,6 +2,7 @@ export enum Countries {
   Deutschland = 'Germany',
   Großbritanien = 'United Kingdom',
   Frankreich = 'France',
+  Belgien = 'Belgium',
   Niederlande = 'Netherlands',
   Italien = 'Italy',
   Österreich = 'Austria',
@@ -17,4 +18,5 @@ export enum Countries {
   Russland = 'Russia',
   USA = 'US',
   China = 'China',
+  Welt = 'World',
 }
