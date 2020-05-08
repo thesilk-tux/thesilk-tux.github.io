@@ -16,6 +16,7 @@ import { ConfirmedPopulationComponent } from './confirmed-population/confirmed-p
 import { ConfirmedCurrentlyLineChartComponent } from './confirmed-currently-line-chart/confirmed-currently-line-chart.component';
 import { CfrLineChartComponent } from './cfr-line-chart/cfr-line-chart.component';
 import { ReproductionFactorLineChartComponent } from './reproduction-factor-line-chart/reproduction-factor-line-chart.component';
+import { DeathsPopulationComponent } from './deaths-population/deaths-population.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ReproductionFactorLineChartComponent } from './reproduction-factor-line
     DeathsTotalRelativeLineChartComponent,
     DeathsTotalLineChartComponent,
     DeathsNewDailyLineChartComponent,
+    DeathsPopulationComponent,
     RecoveredTotalLineChartComponent,
     RecoveredNewDailyLineChartComponent,
     ConfirmedPopulationComponent,
