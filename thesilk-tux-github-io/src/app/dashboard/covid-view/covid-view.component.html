@@ -113,6 +113,15 @@
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <div class="line-chart">
+      <app-infected-last-week-population
+        [data]="covidData"
+        [population]="population"
+        [country]="country"
+      ></app-infected-last-week-population>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="line-chart">
       <app-confirmed-currently-line-chart
         [data]="covidData"
         [country]="country"
@@ -152,13 +161,28 @@
     </div>
   </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-    <p>
-      * Die Reproduktionszahl wird aus dem 7 Tagemittel der täglich
-      Neuinfizierten berechnet. Es wird von einer Generationszeit von 4 Tagen
-      ausgegangen (8 Tage ansteckend), so dass eine Ansteckung durchschnittlich
-      nach 4 Tagen nach der Infektion erfolgt. Die berechneten
-      Reproduktionszahlen sind lediglich eine Näherung und nah an den
-      offiziellen Zahlen der länderspezifischen Instituten dran.
-    </p>
+    <table>
+      <tbody>
+        <tr>
+          <td class="footnote">*</td>
+          <td class="footnote-text">
+            Diese Zahlen zeigen, wieviel Menschen sich in den letzten 7 Tagen
+            pro 100.000 Einwohner neuinfiziert haben. Man kann diese Zahlen als
+            eine Art gleitende Summe auf 100.000 Einwohner normiert ansehen.
+          </td>
+        </tr>
+        <tr>
+          <td class="footnote">**</td>
+          <td class="footnote-text">
+            Die Reproduktionszahl wird aus dem 7 Tagemittel der täglich
+            Neuinfizierten berechnet. Es wird von einer Generationszeit von 4
+            Tagen ausgegangen (8 Tage ansteckend), so dass eine Ansteckung
+            durchschnittlich nach 4 Tagen nach der Infektion erfolgt. Die
+            berechneten Reproduktionszahlen sind lediglich eine Näherung und nah
+            an den offiziellen Zahlen der länderspezifischen Instituten dran.
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
