@@ -17,6 +17,8 @@ export enum Countries {
   Portugal = 'Portugal',
   Russland = 'Russia',
   USA = 'US',
+  Kanada = 'Canada',
   China = 'China',
+  Indien = 'India',
   Welt = 'World',
 }

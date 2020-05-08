@@ -28,7 +28,6 @@ export class StatisticService {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
     for (let i = 1; i < days; i++) {
-      console.log(data.slice(0, i).reduce(reducer));
       sumDaysPrev.push(data.slice(0, i).reduce(reducer));
     }
 

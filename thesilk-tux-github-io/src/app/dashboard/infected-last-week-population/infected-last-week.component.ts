@@ -53,12 +53,6 @@ export class InfectedLastWeekPopulationComponent implements OnChanges, OnInit {
         (val) => val.country === this.country
       )[0].population;
       if (this.data.get(this.country)) {
-        console.log(
-          this.statisticService.getSummarizedCondfirmed(
-            this.data.get(this.country).map((item) => item.confirmed),
-            7
-          )
-        );
         for (const data of this.statisticService.getSummarizedCondfirmed(
           this.getDailyConfirmed(),
           7
