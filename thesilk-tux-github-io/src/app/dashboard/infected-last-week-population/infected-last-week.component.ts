@@ -19,6 +19,7 @@ export class InfectedLastWeekPopulationComponent implements OnChanges, OnInit {
   @Input() data: Map<string, ICovidData[]>;
   @Input() population: ICountryPopulation[];
   @Input() country: string;
+  @Input() timeFilter = 0;
 
   labels: Label[] = [];
   dataSet: ChartDataSets[] = [{ data: [] }];

@@ -15,13 +15,21 @@ export class CovidViewComponent implements OnInit {
   countries = Countries;
   keys: any[];
 
+  timefilter: Map<number, string> = new Map();
+  currentTimeFilter = 0;
+
   covidData: Map<string, ICovidData[]>;
   population: ICountryPopulation[] = [];
+
   private lenCovidData = 1;
 
   constructor(private covidService: CovidService) {
     this.keys = Object.keys(this.countries);
     this.country = Countries.Deutschland;
+    this.timefilter.set(0, 'Alle Daten');
+    this.timefilter.set(7, 'Letzten 7 Tage');
+    this.timefilter.set(14, 'Letzten 14 Tage');
+    this.timefilter.set(30, 'Letzten 30 Tage');
   }
 
   ngOnInit(): void {
@@ -105,8 +113,20 @@ export class CovidViewComponent implements OnInit {
     return 0;
   }
 
+  getTimeFilterKeys(): number[] {
+    const keys: number[] = [];
+    for (const key of this.timefilter.keys()) {
+      keys.push(key);
+    }
+    return keys;
+  }
+
   onCountryChange(event: any) {
     this.country = event.target.value;
+  }
+
+  onTimeFilterChange(event: any) {
+    this.currentTimeFilter = event.target.value;
   }
 
   private getDateLastEntry() {

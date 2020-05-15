@@ -16,6 +16,7 @@ import { Label } from 'ng2-charts';
 export class ConfirmedNewDailyLineChartComponent implements OnChanges, OnInit {
   @Input() data: Map<string, any[]>;
   @Input() country: string;
+  @Input() timeFilter = 0;
 
   labels: Label[] = [];
   dataSet: ChartDataSets[] = [{ data: [] }];

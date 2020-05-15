@@ -5,9 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import {
-  faCogs,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCogs } from '@fortawesome/free-solid-svg-icons';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { StatisticService } from 'src/app/dashboard/statistic.service';
@@ -23,6 +21,7 @@ export class LineChartComponent implements OnChanges, OnInit {
   @Input() dataLabels: Label[] = [];
   @Input() movingAverageDays = 1;
   @Input() chartID: string;
+  @Input() timeFilter = 0;
 
   faCogs = faCogs;
 
@@ -41,6 +40,9 @@ export class LineChartComponent implements OnChanges, OnInit {
   lineChartPlugins = [];
   lineChartType = 'line';
 
+  dataValuesTimeFiltered: ChartDataSets[] = this.dataValues;
+  dataLabelsTimeFiltered: Label[] = this.dataLabels;
+
   private axisType = 'linear';
 
   constructor(private statisticService: StatisticService) {
@@ -49,12 +51,16 @@ export class LineChartComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     this.dataValues[0].label = this.topic;
+    this.dataValuesTimeFiltered = this.getTimeFilteredData();
+    this.dataLabelsTimeFiltered = this.getTimeFilteredLabels();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if ('dataLabels' in changes && this.movingAverageDays > 1) {
       this.showMovingAverage();
     }
+    this.dataValuesTimeFiltered = this.getTimeFilteredData();
+    this.dataLabelsTimeFiltered = this.getTimeFilteredLabels();
   }
 
   onChartType(axisType: string) {
@@ -72,6 +78,8 @@ export class LineChartComponent implements OnChanges, OnInit {
     } else {
       this.showMovingAverage();
     }
+    this.dataValuesTimeFiltered = this.getTimeFilteredData();
+    this.dataLabelsTimeFiltered = this.getTimeFilteredLabels();
   }
 
   getChartTypeLinearID() {
@@ -106,8 +114,10 @@ export class LineChartComponent implements OnChanges, OnInit {
       this.statisticService.getMovingAverage(values, this.movingAverageDays)
     );
     if (movAvg.length > this.movingAverageDays) {
-      this.dataValues.push({ data: movAvg });
-      this.dataValues[1].label = 'Gleitender Durchschnitt 7 Tage';
+      this.dataValues.push({
+        data: movAvg,
+        label: 'Gleitender Durchschnitt 7 Tage',
+      });
       this.lineChartColors.push({
         backgroundColor: 'rgba(0,250,0,0.28)',
         borderColor: 'black',
@@ -122,5 +132,30 @@ export class LineChartComponent implements OnChanges, OnInit {
         yAxes: [{ type: this.axisType, position: 'left' }],
       },
     };
+  }
+
+  getTimeFilteredData(): ChartDataSets[] {
+    if (+this.timeFilter === 0) {
+      return this.dataValues;
+    }
+
+    const data: ChartDataSets[] = [];
+    const lenData = this.dataValues[0].data.length;
+    for (const dataValue of this.dataValues) {
+      data.push({
+        data: dataValue.data.slice(lenData - 1 - this.timeFilter, lenData),
+        label: dataValue.label,
+      });
+    }
+    return data;
+  }
+
+  getTimeFilteredLabels(): Label[] {
+    if (+this.timeFilter === 0) {
+      return this.dataLabels;
+    }
+
+    const lenData = this.dataLabels.length;
+    return this.dataLabels.slice(lenData - 1 - this.timeFilter, lenData);
   }
 }

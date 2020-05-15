@@ -17,6 +17,7 @@ export class DeathsTotalRelativeLineChartComponent
   implements OnChanges, OnInit {
   @Input() data: Map<string, any[]>;
   @Input() country: string;
+  @Input() timeFilter = 0;
 
   labels: Label[] = [];
   dataSet: ChartDataSets[] = [{ data: [] }];

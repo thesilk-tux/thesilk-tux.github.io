@@ -15,8 +15,9 @@ div.sticky-country-selection {
 }
 
 select.country-selection {
-  display: block;
+  display: inline-block;
   max-width: 100%;
+  margin-right:0.5rem;
   padding: 0.375rem 0.75rem;
   padding-right: 2rem;
   font-size: 1rem;
@@ -36,6 +37,37 @@ select.country-selection {
   -moz-appearance: none;
 }
 select.country-selection {
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+}
+
+select.timefilter-selection {
+  display: inline-block;
+  max-width: 100%;
+  margin-right:0.5rem;
+  padding: 0.375rem 0.75rem;
+  padding-right: 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  background-color: #343a40;
+  background-clip: padding-box;
+  border: thin solid grey;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+select.timefilter-selection {
   background-image: linear-gradient(45deg, transparent 50%, gray 50%),
     linear-gradient(135deg, gray 50%, transparent 50%);
   background-position: calc(100% - 20px) calc(1em + 2px),

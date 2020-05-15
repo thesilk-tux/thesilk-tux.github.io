@@ -14,6 +14,16 @@
   >
     <option *ngFor="let key of keys" [value]="countries[key]">{{ key }}</option>
   </select>
+  <select
+    id="timefilter"
+    class="timefilter-selection"
+    formControlName="timefilter"
+    (change)="onTimeFilterChange($event)"
+  >
+    <option *ngFor="let key of getTimeFilterKeys()" [value]="key">{{
+    timefilter.get(key)
+    }}</option>
+  </select>
 </div>
 
 <div class="row">
@@ -50,6 +60,7 @@
       <app-confirmed-total-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-confirmed-total-line-chart>
     </div>
   </div>
@@ -58,6 +69,7 @@
       <app-deaths-total-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-deaths-total-line-chart>
     </div>
   </div>
@@ -66,6 +78,7 @@
       <app-confirmed-new-daily-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-confirmed-new-daily-line-chart>
     </div>
   </div>
@@ -74,6 +87,7 @@
       <app-deaths-new-daily-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-deaths-new-daily-line-chart>
     </div>
   </div>
@@ -82,6 +96,7 @@
       <app-confirmed-total-relative-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-confirmed-total-relative-line-chart>
     </div>
   </div>
@@ -90,6 +105,7 @@
       <app-deaths-total-relative-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-deaths-total-relative-line-chart>
     </div>
   </div>
@@ -99,6 +115,7 @@
         [data]="covidData"
         [population]="population"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-confirmed-population>
     </div>
   </div>
@@ -108,6 +125,7 @@
         [data]="covidData"
         [population]="population"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-deaths-population>
     </div>
   </div>
@@ -117,6 +135,7 @@
         [data]="covidData"
         [population]="population"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-infected-last-week-population>
     </div>
   </div>
@@ -125,6 +144,7 @@
       <app-confirmed-currently-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-confirmed-currently-line-chart>
     </div>
   </div>
@@ -133,6 +153,7 @@
       <app-recovered-total-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-recovered-total-line-chart>
     </div>
   </div>
@@ -141,6 +162,7 @@
       <app-recovered-new-daily-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-recovered-new-daily-line-chart>
     </div>
   </div>
@@ -149,6 +171,7 @@
       <app-reproduction-factor-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-reproduction-factor-line-chart>
     </div>
   </div>
@@ -157,6 +180,7 @@
       <app-cfr-line-chart
         [data]="covidData"
         [country]="country"
+        [timeFilter]="currentTimeFilter"
       ></app-cfr-line-chart>
     </div>
   </div>

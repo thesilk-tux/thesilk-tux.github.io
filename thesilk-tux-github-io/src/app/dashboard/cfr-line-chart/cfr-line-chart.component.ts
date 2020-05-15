@@ -17,6 +17,7 @@ import { ICovidData } from '../covid.interface';
 export class CfrLineChartComponent implements OnChanges, OnInit {
   @Input() data: Map<string, ICovidData[]>;
   @Input() country: string;
+  @Input() timeFilter = 0;
 
   labels: Label[] = [];
   dataSet: ChartDataSets[] = [{ data: [] }];
