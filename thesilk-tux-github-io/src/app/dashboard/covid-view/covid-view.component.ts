@@ -30,6 +30,8 @@ export class CovidViewComponent implements OnInit {
     this.timefilter.set(7, 'Letzten 7 Tage');
     this.timefilter.set(14, 'Letzten 14 Tage');
     this.timefilter.set(30, 'Letzten 30 Tage');
+    this.timefilter.set(60, 'Letzten 60 Tage');
+    this.timefilter.set(90, 'Letzten 90 Tage');
   }
 
   ngOnInit(): void {
